@@ -1,8 +1,10 @@
+// /app/restaurant_pages/RestaurantTemplate.tsx
+'use client';
+
 import {useEffect} from 'react'
 
 type RestaurantTemplateProps = {
     title: string;
-    image: string;
 }
 
 const RestaurantTemplate = ({title}: RestaurantTemplateProps) => {

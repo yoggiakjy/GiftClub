@@ -8,7 +8,7 @@ export default function Home() {
       <h1>Select a Page</h1>
       <nav style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
         {pages.map((page) => (
-          <Link key={page.slug} href={`/${page.slug}`}>
+          <Link key={page.slug} href={`/restaurant_pages/${page.slug}`}>
             {page.title}
           </Link>
         ))}
