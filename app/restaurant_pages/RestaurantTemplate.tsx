@@ -5,6 +5,9 @@ import {useEffect} from 'react'
 
 type RestaurantTemplateProps = {
     title: string;
+    image: string;
+    discount: string;
+    description: string;
 }
 
 const RestaurantTemplate = ({title}: RestaurantTemplateProps) => {
@@ -14,8 +17,8 @@ const RestaurantTemplate = ({title}: RestaurantTemplateProps) => {
     }, [title]);
 
     return (
-        <div className = "title">
-            <h1>{title}</h1>
+        <div>
+            <h1 className = "title">{title}</h1>
         </div>
     );
 
