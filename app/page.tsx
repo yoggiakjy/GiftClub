@@ -1,32 +1,18 @@
-import Image from "next/image";
 import Link from "next/link";
+import Navbar from "./components/Navbar";
+import { NavbarLinks } from "./lib/data";
 
 export default function Home() {
   return (
-    <div className="w-full h-screen flex flex-col bg-red-500">
-      {/* Header */}
-      <div className="relative flex justify-center items-center w-full">
-        <Image
-          src="/logo_transparent.png"
-          alt="Logo"
-          width={500}
-          height={500}
-          className="w-[8rem]"
-        />
-
-        <div className="absolute top-[3rem] right-[2rem] font-semibold space-x-4">
-          <button className="w-[5rem] h-[2rem] bg-red-700 shadow-2xl rounded-lg text-white ">
-            Sign in
-          </button>
-          <button className="w-[5rem] h-[2rem] bg-white shadow-2xl rounded-lg text-gray-700 ">
-            Sign up
-          </button>
-        </div>
-      </div>
+    <div className="w-full h-screen flex flex-col justify-start items-center bg-[#EDE8D0] pt-[2rem]">
+      <Navbar navbarItems={NavbarLinks} />
 
       {/* Hero */}
-      <p>Eat out without forking out</p>
-      <p>Save up to 50% off the total bill at the best restaurants and bars in your city</p>
+      <p className="text-6xl w-[35rem]">Eat out without forking out!</p>
+      <p className="text-4xl font-light w-[50rem]">
+        Save up to 50% off the total bill at the best restaurants and bars in
+        your city
+      </p>
       <Link href={"/explore"} className="text-white">
         <p>click here for explor epage</p>
       </Link>
