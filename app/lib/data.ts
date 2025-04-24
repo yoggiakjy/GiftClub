@@ -10,5 +10,5 @@ export const NavbarLinks = [
     {
         title: "Contact",
         link: "/contact",
-    }
+    },
 ]
