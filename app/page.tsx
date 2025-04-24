@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -26,6 +27,9 @@ export default function Home() {
       {/* Hero */}
       <p>Eat out without forking out</p>
       <p>Save up to 50% off the total bill at the best restaurants and bars in your city</p>
+      <Link href={"/explore"} className="text-white">
+        <p>click here for explor epage</p>
+      </Link>
     </div>
   );
 }
