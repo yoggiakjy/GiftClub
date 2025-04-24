@@ -31,3 +31,34 @@ export const restaurants = [
     slug: "shanghai-village",
   },
 ];
+
+export const cuisines = [
+  {
+    id: 1,
+    name: "Chinese",
+    image: "/japanese-restaurant.jpg",
+    discount: "Up to 50% OFF",
+    colour: "bg-red-300"
+  },
+  {
+    id: 2,
+    name: "Korean",
+    image: "/japanese-restaurant.jpg",
+    discount: "Up to 40% OFF",
+    colour: "bg-orange-300"
+  },
+  {
+    id: 3,
+    name: "French",
+    image: "/japanese-restaurant.jpg",
+    discount: "Up to 30% OFF",
+    colour: "bg-indigo-100"
+  },
+  {
+    id: 4,
+    name: "Italian",
+    image: "/japanese-restaurant.jpg",
+    discount: "Up to 35% OFF",
+    colour: "bg-yellow-200"
+  },
+]

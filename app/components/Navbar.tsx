@@ -77,7 +77,7 @@ const Navbar = ({ navbarItems }: { navbarItems: NavbarItem[] }) => {
         {/* Header Button */}
         <Link
           href="/"
-          className="w-[10rem] h-[3rem] rounded-full border font-medium bg-neutral-100 flex justify-center items-center"
+          className="flex justify-center items-center relative z-20 w-[10rem] h-[3rem] rounded-full border font-medium hover:bg-neutral-100 transition duration-300 ease-in-out"
         >
           Download App
         </Link>

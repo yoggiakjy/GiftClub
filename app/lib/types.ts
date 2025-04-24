@@ -6,3 +6,11 @@ export interface Restaurant {
   image: string;
   slug: string;
 }
+
+export interface Cuisine {
+  id: number;
+  name: string;
+  image: string;
+  discount: string;
+  colour: string;
+}

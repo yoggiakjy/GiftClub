@@ -14,7 +14,7 @@ const Hero = () => {
             Save up to 50% off the total bill at the best restaurants and bars
             in your city.
           </p>
-          <button className="flex justify-center items-center space-x-6 bg-neutral-200 rounded-full py-3 px-6 mt-[4rem]">
+          <button className="flex justify-center items-center space-x-6 bg-neutral-200 rounded-full hover:scale-105 transition duration-300 ease-in-out py-3 px-6 mt-[4rem]">
             <p className="text-zinc-800 text-lg font-semibold">
               Get Started Now
             </p>
@@ -37,7 +37,7 @@ const Hero = () => {
               Whether you&apos;re planning a night out or a special event,
               we&apos;ve got the perfect spot waiting.
             </p>
-            <button className="flex justify-center items-center space-x-6 bg-neutral-200 rounded-full py-3 px-6 mt-6">
+            <button className="flex justify-center items-center space-x-6 bg-neutral-200 rounded-full hover:scale-105 transition duration-300 ease-in-out py-3 px-6 mt-6">
               <p className="text-zinc-800 text-lg font-semibold">
                 Check Our Venues
               </p>
