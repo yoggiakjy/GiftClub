@@ -59,7 +59,7 @@ const RestaurantCards = () => {
         {restaurants.map((restaurant) => (
           <Link
             key={restaurant.slug}
-            href={`/restaurant_pages/${restaurant.slug}`}
+            href={`/restaurants/${restaurant.slug}`}
           >
             <RestaurantCard restaurant={restaurant} key={restaurant.id} />
           </Link>
