@@ -18,21 +18,26 @@ const Navbar = ({ navbarItems }: { navbarItems: NavbarItem[] }) => {
         className="w-full flex justify-between items-center rounded-2xl px-[1rem] py-[0.5rem]"
       >
         {/* Logo */}
-        <motion.p
-          initial={{ scale: 0, rotate: -45, opacity: 0 }}
-          whileInView={{ scale: 1, rotate: 0, opacity: 1 }}
-          transition={{
-            type: "spring",
-            duration: 0.5,
-            ease: "easeInOut",
-            stiffness: 200,
-            damping: 40,
-          }}
-          viewport={{ once: true }}
-          className="font-extrabold text-3xl text-zinc-800 py-[1rem]"
+        <Link
+          href={"/"}
+          className="relative z-20 flex justify-center items-center"
         >
-          GIFTCLUB
-        </motion.p>
+          <motion.div
+            initial={{ scale: 0, rotate: -45, opacity: 0 }}
+            whileInView={{ scale: 1, rotate: 0, opacity: 1 }}
+            transition={{
+              type: "spring",
+              duration: 0.5,
+              ease: "easeInOut",
+              stiffness: 200,
+              damping: 40,
+            }}
+            viewport={{ once: true }}
+            className="font-extrabold text-3xl text-zinc-800 py-[1rem]"
+          >
+            GIFTCLUB
+          </motion.div>
+        </Link>
 
         {/* Navbar Links */}
         <motion.div
