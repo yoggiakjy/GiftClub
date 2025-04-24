@@ -15,6 +15,7 @@ const Navbar = ({ navbarItems }: { navbarItems: NavbarItem[] }) => {
         initial={{ y: 40, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.1, ease: "easeInOut" }}
+        viewport={{ once: true }}
         className="w-full flex justify-between items-center rounded-2xl px-[1rem] py-[0.5rem]"
       >
         {/* Logo */}
