@@ -10,7 +10,7 @@ type RestaurantTemplateProps = {
     description: string;
 }
 
-const RestaurantTemplate = ({title}: RestaurantTemplateProps) => {
+const RestaurantTemplate = ({title, image}: RestaurantTemplateProps) => {
 
     useEffect (() => {
         document.title = title;
@@ -19,6 +19,7 @@ const RestaurantTemplate = ({title}: RestaurantTemplateProps) => {
     return (
         <div>
             <h1 className = "title">{title}</h1>
+            <img src={image} alt="my image"/>
         </div>
     );
 

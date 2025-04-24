@@ -1,6 +1,6 @@
 // /app/restaurant_pages/data/pages.tsx
 export const pages = [
-  { slug: 'page1', title: 'Page One', image: '/images/image1.jpg' },
+  { slug: 'page1', title: 'Page One', image: '/images/pizza.png' },
   { slug: 'page2', title: 'Page Two', image: '/images/image2.jpg' },
   { slug: 'page3', title: 'Page Three', image: '/images/image3.jpg' },
   { slug: 'page4', title: 'Page Four', image: '/images/image4.jpg' },
