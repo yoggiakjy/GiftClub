@@ -71,6 +71,12 @@ const Hero = () => {
               bounce: 0.2,
             },
           }}
+          viewport={{ once: true }}
+          whileHover={{
+            scale: 1.05,
+            y: -12,
+            rotate: 2
+          }}
         >
           <Image
             src="/hero_3d.png"

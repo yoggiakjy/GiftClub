@@ -24,7 +24,7 @@ const ExploreSection = ({ cuisines }: { cuisines: Cuisine[] }) => {
               type: "spring",
             }}
             key={cuisine.id}
-            className="w-[25rem]"
+            className="w-[25rem] hover:scale-102 hover:-translate-y-1 transition duration-300 ease-in-out"
           >
             <CuisineCard cuisine={cuisine} />
           </motion.div>

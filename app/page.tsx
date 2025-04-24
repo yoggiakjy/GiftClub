@@ -2,6 +2,7 @@ import Navbar from "./components/Navbar";
 import { cuisines, NavbarLinks, restaurants } from "./lib/data";
 import Hero from "./components/Hero";
 import ExploreSection from "./components/ExploreSection";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
         <Hero />
       </div>
       <ExploreSection cuisines={cuisines} />
+      <Footer/>
     </div>
   );
 }
