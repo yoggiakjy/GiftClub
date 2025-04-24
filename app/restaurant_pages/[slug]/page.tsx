@@ -12,5 +12,5 @@ export default function DynamicPage({ params }: Props) {
 
   if (!page) return notFound();
 
-  return <RestaurantTemplate title={page.title} image = {page.image} discount ="" description=''/>;
+  return <RestaurantTemplate title={page.title} image = {page.image} discount ="" description='' opening_hours='' voucher_time='' address='' />;
 }

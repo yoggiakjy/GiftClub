@@ -8,6 +8,10 @@ type RestaurantTemplateProps = {
     image: string;
     discount: string;
     description: string;
+    opening_hours: string;
+    voucher_time: string;
+    address: string;
+
 }
 
 const RestaurantTemplate = ({title, image}: RestaurantTemplateProps) => {
@@ -16,6 +20,9 @@ const RestaurantTemplate = ({title, image}: RestaurantTemplateProps) => {
         document.title = title;
     }, [title]);
 
+    // TODO:
+    // Add a back button
+    // Add a redeem button
     return (
         <div>
             <h1 className = "title">{title}</h1>
