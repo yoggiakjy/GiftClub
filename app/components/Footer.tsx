@@ -3,11 +3,11 @@ import Link from "next/link";
 import React from "react";
 import { motion } from "framer-motion";
 import { MdEmail } from "react-icons/md";
-import { FaLocationDot, FaSquarePhone } from "react-icons/fa6";
+import { FaSquarePhone } from "react-icons/fa6";
 
-const Footer = () => {
+const Footer = ({ className }: { className?: string }) => {
   return (
-    <div className="w-full px-[1rem]">
+    <div className={`w-full px-[1rem] ${className}`}>
       <div className="w-full h-full flex flex-col justify-center items-center rounded-t-4xl bg-[url('/broken-noise.png')] bg-zinc-800 px-[2rem]">
         <MainFooter />
 

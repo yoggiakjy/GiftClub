@@ -32,3 +32,18 @@ export interface ShortFormVideo {
   bookmarkCount: number;
   shareCount: number;
 }
+
+export type DynamicRestaurant = {
+  slug: string;
+  title: string;
+  image: string;
+  description: string;
+  location: string;
+  openingHours: string;
+  vouchers: Voucher[];
+}
+
+export type Voucher = {
+  voucherTime: string;
+  discount: string;
+}
