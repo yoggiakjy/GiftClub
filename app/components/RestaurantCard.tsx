@@ -1,62 +1,46 @@
+import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
-import { ChevronRight } from 'lucide-react';
-import { Restaurant } from '../lib/types';
 
-interface Props {
-  restaurant: Restaurant;
+interface RestaurantProps {
+  restaurant: {
+    name: string;
+    location: string;
+    discount?: string;
+    image?: string;
+    hasOffers?: boolean;
+  };
 }
 
-const RestaurantCard: React.FC<Props> = ({ restaurant }) => {
-  const { name, location, discount, image, slug } = restaurant;
-  
+const RestaurantCard: React.FC<RestaurantProps> = ({ restaurant }) => {
   return (
-    <div className="relative rounded-lg overflow-hidden shadow-md">
-      {/* Top location and navigation */}
-      <div className="absolute top-0 left-0 right-0 flex justify-between items-center p-4 z-10">
-        <h3 className="font-semibold text-white drop-shadow-lg">{location}</h3>
-        <button className="bg-white bg-opacity-70 rounded-full p-1">
-          {/* <ChevronRight className="w-5 h-5" /> */}
-        </button>
-      </div>
-      
-      {/* Restaurant image */}
-      <div className="relative h-80 w-full">
-        <Image
-          src={restaurant.image}
-          alt=""
-          fill
-          className="object-cover"
-          sizes="(max-width: 768px) 100vw, 50vw"
-        />
-        
-        {/* Pagination dots
-        <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
-          {[...Array(5)].map((_, i) => (
-            <div 
-              key={i} 
-              className={`h-2 w-2 rounded-full ${i === 0 ? 'bg-white' : 'bg-white bg-opacity-60'}`}
-            />
-          ))}
-        </div> */}
-      </div>
-      
-      {/* Restaurant info */}
-      <div className="p-4 bg-white flex justify-between items-center">
-        <div>
-          <h2 className="font-bold text-lg">{name}</h2>
-          <p className="text-gray-600">{location}</p>
-        </div>
-        
-        {/* Discount tag */}
-        <div className="flex items-center">
-          <div className="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-md flex items-center">
-            <span className="mr-1">↑</span> {discount}
+    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 w-full md:w-80"> {/* Adjust width here */}
+      <div className="relative h-48">
+        {restaurant.image ? (
+          <Image
+            src={restaurant.image}
+            alt={restaurant.name}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+        ) : (
+          <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+            <p className="text-gray-500">No image available</p>
           </div>
-            <div className="ml-3 bg-gray-100 rounded-full p-1">
-              <ChevronRight className="w-5 h-5" />
-            </div>
-        </div>
+        )}
+        {restaurant.discount && (
+          <div className="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full font-bold">
+            {restaurant.discount}
+          </div>
+        )}
+      </div>
+      <div className="p-4">
+        <h3 className="text-xl font-bold">{restaurant.name}</h3>
+        <p className="text-gray-600">{restaurant.location}</p>
+        
+        {restaurant.hasOffers && !restaurant.discount && (
+          <p className="text-green-600 mt-2 font-medium">Special offers available</p>
+        )}
       </div>
     </div>
   );

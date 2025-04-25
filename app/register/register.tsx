@@ -28,7 +28,7 @@ export default function Register() {
         router.push("/explore");
       } else {
         await registerRestaurant(email, password, name, location);
-        router.push("/restaurant/dashboard");
+        router.push("/explore");
       }
     } catch (err) {
       console.error(err);

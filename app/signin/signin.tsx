@@ -5,8 +5,9 @@ import { useState } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import { useRouter } from 'next/navigation';
 import { signInWithPopup } from 'firebase/auth';
-import { auth, googleProvider } from '@/src/firebase/firebase';
+import { auth, firestore, googleProvider } from '@/src/firebase/firebase';
 import Link from 'next/link';
+import { doc, getDoc } from 'firebase/firestore';
 
 export default function SignIn() {
   const [email, setEmail] = useState('');
@@ -21,11 +22,13 @@ export default function SignIn() {
     
     try {
       const userCredential = await signIn(email, password);
+      console.log("Signed in user:", userCredential.user.uid);
       const userType = await getUserType(userCredential.user.uid);
+      console.log("User type:", userType);
       
-      if (userType === 'customer') {
+      if (userType === "customer") {
         router.push('/explore');
-      } else if (userType === 'restaurant') {
+      } else if (userType === "restaurant") {
         router.push('/explore');
       } else {
         setError('Account type not found');
@@ -45,7 +48,7 @@ export default function SignIn() {
         if (userType === 'customer' || !userType) {
           router.push('/explore');
         } else if (userType === 'restaurant') {
-          router.push('/restaurant/dashboard');
+          router.push('/explore');
         }
       }
     } catch (err) {

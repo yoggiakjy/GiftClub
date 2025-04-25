@@ -1,104 +1,51 @@
-// hooks/useRestaurant.ts
-import { useState } from "react";
-import {
-  collection,
-  addDoc,
-  updateDoc,
-  doc,
-  serverTimestamp,
-  query,
-  where,
-  getDocs,
-  arrayUnion,
-} from "firebase/firestore";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { firestore, storage } from "@/src/firebase/firebase";
+import { useEffect, useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { firestore } from "@/src/firebase/firebase";
 
-export function useRestaurant(restaurantId: string) {
-  const [loading, setLoading] = useState(false);
-
-  // Upload restaurant image
-  const uploadImage = async (file: File) => {
-    if (!restaurantId) return null;
-
-    setLoading(true);
-    try {
-      const storageRef = ref(
-        storage,
-        `restaurants/${restaurantId}/${Date.now()}-${file.name}`
-      );
-      await uploadBytes(storageRef, file);
-      const downloadUrl = await getDownloadURL(storageRef);
-
-      // Update restaurant document with new image
-      const restaurantRef = doc(firestore, "restaurants", restaurantId);
-      await updateDoc(restaurantRef, {
-        images: arrayUnion(downloadUrl),
-      });
-
-      setLoading(false);
-      return downloadUrl;
-    } catch (error) {
-      console.error("Error uploading image:", error);
-      setLoading(false);
-      return null;
-    }
-  };
-
-  // Create a new discount
-  const createDiscount = async (discountData: {
-    title: string;
-    description: string;
-    percentage: number;
-    validFrom: Date;
-    validUntil: Date;
-  }) => {
-    if (!restaurantId) return null;
-
-    setLoading(true);
-    try {
-      const discountRef = await addDoc(collection(firestore, "discounts"), {
-        restaurantId,
-        ...discountData,
-        isActive: true,
-        createdAt: serverTimestamp(),
-        usageCount: 0,
-      });
-
-      setLoading(false);
-      return discountRef.id;
-    } catch (error) {
-      console.error("Error creating discount:", error);
-      setLoading(false);
-      return null;
-    }
-  };
-
-  // Get restaurant's discounts
-  const getDiscounts = async () => {
-    if (!restaurantId) return [];
-
-    try {
-      const q = query(
-        collection(firestore, "discounts"),
-        where("restaurantId", "==", restaurantId)
-      );
-
-      const querySnapshot = await getDocs(q);
-      return querySnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-    } catch (error) {
-      console.error("Error fetching discounts:", error);
-      return [];
-    }
-  };
-
-  return {
-    loading,
-    uploadImage,
-    createDiscount,
-    getDiscounts,
-  };
+export interface Restaurant {
+  id: string;
+  name: string;
+  location: string;
+  discount?: string;
+  image?: string;
+  slug: string;
 }
+
+export const useRestaurants = () => {
+  const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchRestaurants = async () => {
+      try {
+        const restaurantsSnapshot = await getDocs(collection(firestore, "restaurants"));
+        const restaurantsList: Restaurant[] = [];
+
+        restaurantsSnapshot.forEach((doc) => {
+          const data = doc.data();
+          // Create a slug from the restaurant name if it doesn't exist
+          const slug = data.slug || data.name?.toLowerCase().replace(/\s+/g, '-') || doc.id;
+          
+          restaurantsList.push({
+            id: doc.id,
+            name: data.name || 'Unnamed Restaurant',
+            location: data.location || 'Unknown Location',
+            discount: data.discount || '',
+            image: data.image || "/default-restaurant.jpg",
+            slug: slug
+          });
+        });
+
+        setRestaurants(restaurantsList);
+      } catch (error) {
+        console.error("Error fetching restaurants:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchRestaurants();
+  }, []);
+
+  return { restaurants, loading };
+};

@@ -25,7 +25,7 @@ export const restaurants = [
     name: "Shoya Japanese Restaurant",
     location: "Melbourne",
     discount: "25% OFF",
-    image: "/japanese-restaurant.jpg",
+    image: "/default-restaurant.jpg",
     slug: "shoya-japanese-r",
   },
   {
@@ -33,7 +33,7 @@ export const restaurants = [
     name: "Shanghai Village",
     location: "Melbourne",
     discount: "15% OFF",
-    image: "/japanese-restaurant.jpg",
+    image: "/default-restaurant.jpg",
     slug: "shanghai-v",
   },
   {
@@ -41,7 +41,7 @@ export const restaurants = [
     name: "Shoya Japanese Restaurant",
     location: "Melbourne",
     discount: "25% OFF",
-    image: "/japanese-restaurant.jpg",
+    image: "/default-restaurant.jpg",
     slug: "shoya-japanese-res",
   },
   {
@@ -49,7 +49,7 @@ export const restaurants = [
     name: "Shanghai Village",
     location: "Melbourne",
     discount: "15% OFF",
-    image: "/japanese-restaurant.jpg",
+    image: "/default-restaurant.jpg",
     slug: "shanghai-vil",
   },
   {
@@ -57,7 +57,7 @@ export const restaurants = [
     name: "Shoya Japanese Restaurant",
     location: "Melbourne",
     discount: "25% OFF",
-    image: "/japanese-restaurant.jpg",
+    image: "/default-restaurant.jpg",
     slug: "shoya-japanese-restaurant",
   },
   {
@@ -65,7 +65,7 @@ export const restaurants = [
     name: "Shanghai Village",
     location: "Melbourne",
     discount: "15% OFF",
-    image: "/japanese-restaurant.jpg",
+    image: "/default-restaurant.jpg",
     slug: "shanghai-village",
   },
 ];
