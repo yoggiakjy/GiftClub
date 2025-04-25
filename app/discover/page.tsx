@@ -4,17 +4,23 @@ import Navbar from "../components/Navbar";
 import { NavbarLinks, videos } from "../lib/data";
 import { Orientation } from "../lib/types";
 import VideoScroller from "../components/VideoScroller";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { IoCloudUploadOutline } from "react-icons/io5";
 import UploadModal from "../components/UploadModal";
 
 const page = () => {
-  const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="relative flex justify-center items-start w-full">
       <Navbar navbarItems={NavbarLinks} orientation={Orientation.Vertical} />
       <VideoScroller videos={videos} />
+      <UploadButtonModal />
+    </div>
+  );
+};
+const UploadButtonModal = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <div>
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -32,12 +38,8 @@ const page = () => {
         </button>
       </motion.div>
 
-      <UploadModal isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        <p>Hello</p>
-        <button onClick={() => setIsOpen(false)}>close</button>
-      </UploadModal>
+      <UploadModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </div>
   );
 };
-
 export default page;

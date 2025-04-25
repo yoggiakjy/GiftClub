@@ -1,16 +1,25 @@
-import React, { ReactNode, useState } from "react";
+import React, { useRef, useState } from "react";
 import { GrCloudUpload } from "react-icons/gr";
 import { MdClose } from "react-icons/md";
 
 const UploadModal = ({
   isOpen,
   onClose,
-  children,
 }: {
   isOpen: boolean;
   onClose: () => void;
-  children: ReactNode;
 }) => {
+  const fileRef = useRef<HTMLInputElement>(null);
+  const handleUploadClick = () => {
+    fileRef.current?.click();
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      console.log(file.name);
+    }
+  };
   if (!isOpen) return null;
 
   return (
@@ -19,7 +28,7 @@ const UploadModal = ({
       className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50"
     >
       <div
-        className="relative bg-neutral-200 rounded-3xl p-6 max-w-[80%] w-full shadow-xl"
+        className="relative bg-neutral-200 rounded-3xl p-6 max-w-[50%] w-full shadow-xl"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}
@@ -50,7 +59,18 @@ const UploadModal = ({
               <br />
               Less than 1 GB
             </p>
-            <button className="bg-amber-800 text-neutral-100 font-semibold px-[3rem] py-1.5 rounded-md mt-7">
+            <input
+              type="file"
+              accept="video/*"
+              ref={fileRef}
+              onChange={handleFileChange}
+              className="hidden"
+            />
+
+            <button
+              onClick={handleUploadClick}
+              className="bg-amber-800 text-neutral-100 font-semibold px-[3rem] py-1.5 rounded-md mt-7 cursor-pointer"
+            >
               Select File
             </button>
           </div>

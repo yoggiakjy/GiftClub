@@ -1,16 +1,16 @@
 // hooks/useAuth.ts
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { 
-  createUserWithEmailAndPassword, 
+import { useState, useEffect } from "react";
+import {
+  createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut as firebaseSignOut,
   onAuthStateChanged,
-  User
-} from 'firebase/auth';
-import { doc, setDoc, getDoc, serverTimestamp } from 'firebase/firestore';
-import { auth, firestore } from '@/src/firebase/firebase';
+  User,
+} from "firebase/auth";
+import { doc, setDoc, getDoc, serverTimestamp } from "firebase/firestore";
+import { auth, firestore } from "@/src/firebase/firebase";
 
 export function useAuth() {
   const [user, setUser] = useState<User | null>(null);
@@ -25,17 +25,25 @@ export function useAuth() {
   }, []);
 
   // Register a new customer
-  const registerCustomer = async (email: string, password: string, displayName: string) => {
+  const registerCustomer = async (
+    email: string,
+    password: string,
+    displayName: string
+  ) => {
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
       // Create user document
-      await setDoc(doc(firestore, 'users', userCredential.user.uid), {
+      await setDoc(doc(firestore, "users", userCredential.user.uid), {
         email,
         displayName,
         createdAt: serverTimestamp(),
         usedDiscounts: [],
         favoriteRestaurants: [],
-        userType: 'customer'
+        userType: "customer",
       });
       return userCredential.user;
     } catch (error) {
@@ -45,18 +53,27 @@ export function useAuth() {
   };
 
   // Register a new restaurant
-  const registerRestaurant = async (email: string, password: string, restaurantName: string, location: string) => {
+  const registerRestaurant = async (
+    email: string,
+    password: string,
+    restaurantName: string,
+    location: string
+  ) => {
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
       // Create restaurant document
-      await setDoc(doc(firestore, 'restaurants', userCredential.user.uid), {
+      await setDoc(doc(firestore, "restaurants", userCredential.user.uid), {
         email,
         name: restaurantName,
         location,
-        description: '',
+        description: "",
         images: [],
         createdAt: serverTimestamp(),
-        userType: 'restaurant'
+        userType: "restaurant",
       });
       return userCredential.user;
     } catch (error) {
@@ -79,19 +96,18 @@ export function useAuth() {
   const getUserType = async (uid: string) => {
     try {
       // Check if user exists in customers collection
-      const userDoc = await getDoc(doc(firestore, 'users', uid));
-      if (userDoc.exists()) return 'customer';
-      
+      const userDoc = await getDoc(doc(firestore, "users", uid));
+      if (userDoc.exists()) return "customer";
+
       // Check if user exists in restaurants collection
-      const restaurantDoc = await getDoc(doc(firestore, 'restaurants', uid));
-      if (restaurantDoc.exists()) return 'restaurant';
-      
+      const restaurantDoc = await getDoc(doc(firestore, "restaurants", uid));
+      if (restaurantDoc.exists()) return "restaurant";
+
       return null;
     } catch (error) {
       console.error("Error getting user type:", error);
       return null;
     }
-    
   };
 
   return {
@@ -101,6 +117,6 @@ export function useAuth() {
     registerRestaurant,
     signIn,
     signOut,
-    getUserType
+    getUserType,
   };
 }

@@ -3,6 +3,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Orientation } from "../lib/types";
+import AuthButton from "./AuthButton";
 interface NavbarItem {
   title: string;
   link: string;
@@ -94,15 +95,8 @@ const Navbar = ({
           ))}
         </motion.div>
 
-        {/* Header Button */}
-        <Link
-          href="/"
-          className={`${
-            orientation === Orientation.Vertical ? "mt-[2rem]" : ""
-          } flex justify-center items-center relative z-20 w-[10rem] h-[3rem] rounded-full border font-medium hover:bg-neutral-100 transition duration-300 ease-in-out`}
-        >
-          Download App
-        </Link>
+        {/* Authentication */}
+        <AuthButton orientation={orientation} />
       </motion.div>
     </div>
   );

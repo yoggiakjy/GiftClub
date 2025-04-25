@@ -23,7 +23,12 @@ export enum Orientation {
 export interface ShortFormVideo {
   id: number;
   videoSrc: string;
-  account: string;
+  accountName: string;
+  accountIcon: string;
   caption: string;
   tags: string;
+  likeCount: number;
+  commentCount: number;
+  bookmarkCount: number;
+  shareCount: number;
 }

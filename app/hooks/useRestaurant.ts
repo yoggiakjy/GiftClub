@@ -1,8 +1,18 @@
 // hooks/useRestaurant.ts
-import { useState } from 'react';
-import { collection, addDoc, updateDoc, doc, serverTimestamp, query, where, getDocs, arrayUnion } from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { firestore, storage } from '@/src/firebase/firebase';
+import { useState } from "react";
+import {
+  collection,
+  addDoc,
+  updateDoc,
+  doc,
+  serverTimestamp,
+  query,
+  where,
+  getDocs,
+  arrayUnion,
+} from "firebase/firestore";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { firestore, storage } from "@/src/firebase/firebase";
 
 export function useRestaurant(restaurantId: string) {
   const [loading, setLoading] = useState(false);
@@ -10,19 +20,22 @@ export function useRestaurant(restaurantId: string) {
   // Upload restaurant image
   const uploadImage = async (file: File) => {
     if (!restaurantId) return null;
-    
+
     setLoading(true);
     try {
-      const storageRef = ref(storage, `restaurants/${restaurantId}/${Date.now()}-${file.name}`);
+      const storageRef = ref(
+        storage,
+        `restaurants/${restaurantId}/${Date.now()}-${file.name}`
+      );
       await uploadBytes(storageRef, file);
       const downloadUrl = await getDownloadURL(storageRef);
-      
+
       // Update restaurant document with new image
-      const restaurantRef = doc(firestore, 'restaurants', restaurantId);
+      const restaurantRef = doc(firestore, "restaurants", restaurantId);
       await updateDoc(restaurantRef, {
-        images: arrayUnion(downloadUrl)
+        images: arrayUnion(downloadUrl),
       });
-      
+
       setLoading(false);
       return downloadUrl;
     } catch (error) {
@@ -41,17 +54,17 @@ export function useRestaurant(restaurantId: string) {
     validUntil: Date;
   }) => {
     if (!restaurantId) return null;
-    
+
     setLoading(true);
     try {
-      const discountRef = await addDoc(collection(firestore, 'discounts'), {
+      const discountRef = await addDoc(collection(firestore, "discounts"), {
         restaurantId,
         ...discountData,
         isActive: true,
         createdAt: serverTimestamp(),
-        usageCount: 0
+        usageCount: 0,
       });
-      
+
       setLoading(false);
       return discountRef.id;
     } catch (error) {
@@ -64,17 +77,17 @@ export function useRestaurant(restaurantId: string) {
   // Get restaurant's discounts
   const getDiscounts = async () => {
     if (!restaurantId) return [];
-    
+
     try {
       const q = query(
-        collection(firestore, 'discounts'),
-        where('restaurantId', '==', restaurantId)
+        collection(firestore, "discounts"),
+        where("restaurantId", "==", restaurantId)
       );
-      
+
       const querySnapshot = await getDocs(q);
-      return querySnapshot.docs.map(doc => ({
+      return querySnapshot.docs.map((doc) => ({
         id: doc.id,
-        ...doc.data()
+        ...doc.data(),
       }));
     } catch (error) {
       console.error("Error fetching discounts:", error);
@@ -86,6 +99,6 @@ export function useRestaurant(restaurantId: string) {
     loading,
     uploadImage,
     createDiscount,
-    getDiscounts
+    getDiscounts,
   };
 }

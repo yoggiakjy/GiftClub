@@ -43,14 +43,27 @@ const Hero = () => {
             in your city.
           </motion.p>
 
-          <button className="flex justify-center items-center space-x-6 bg-neutral-200 rounded-full py-3 px-6 mt-[4rem]">
-            <Link href={"/register"}>
+          <motion.button
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{
+              duration: 0.5,
+              delay: 0.5,
+              ease: "easeInOut",
+            }}
+            viewport={{ once: true }}
+            className=" bg-neutral-200 rounded-full"
+          >
+            <Link
+              href={"/register"}
+              className="flex justify-center items-center space-x-6 py-3 px-6"
+            >
               <p className="text-zinc-800 text-lg font-semibold">
                 Get Started Now
               </p>
               <FaArrowRightLong className="rounded-full bg-zinc-800 w-[2.3rem] h-[2.3rem] p-2" />
             </Link>
-          </button>
+          </motion.button>
         </div>
 
         <motion.div
