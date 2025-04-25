@@ -1,4 +1,3 @@
-// components/RestaurantCard.jsx
 import Image from 'next/image';
 import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
@@ -54,11 +53,9 @@ const RestaurantCard: React.FC<Props> = ({ restaurant }) => {
           <div className="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-md flex items-center">
             <span className="mr-1">↑</span> {discount}
           </div>
-          <Link href={`/restaurant/${slug}`}>
             <div className="ml-3 bg-gray-100 rounded-full p-1">
               <ChevronRight className="w-5 h-5" />
             </div>
-          </Link>
         </div>
       </div>
     </div>

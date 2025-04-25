@@ -10,7 +10,7 @@ const RestaurantCards = () => {
       location: "Melbourne",
       discount: "25% OFF",
       image: "/japanese-restaurant.jpg",
-      slug: "shoya-japanese-restaurant",
+      slug: "shoya-japanese-r",
     },
     {
       id: 2,
@@ -18,7 +18,7 @@ const RestaurantCards = () => {
       location: "Melbourne",
       discount: "15% OFF",
       image: "/japanese-restaurant.jpg",
-      slug: "shanghai-village",
+      slug: "shanghai-v",
     },
     {
       id: 3,
@@ -26,7 +26,7 @@ const RestaurantCards = () => {
       location: "Melbourne",
       discount: "25% OFF",
       image: "/japanese-restaurant.jpg",
-      slug: "shoya-japanese-restaurant",
+      slug: "shoya-japanese-res",
     },
     {
       id: 4,
@@ -34,7 +34,7 @@ const RestaurantCards = () => {
       location: "Melbourne",
       discount: "15% OFF",
       image: "/japanese-restaurant.jpg",
-      slug: "shanghai-village",
+      slug: "shanghai-vil",
     },
     {
       id: 5,

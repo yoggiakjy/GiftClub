@@ -2,6 +2,10 @@
 export const pages = [
   { slug: 'shoya-japanese-restaurant', title: 'Page One', image: '/images/pizza.png' },
   { slug: 'shanghai-village', title: 'Page Two', image: '/images/image2.jpg' },
+  { slug: 'shoya-japanese-r', title: 'Page One', image: '/images/pizza.png' },
+  { slug: 'shanghai-v', title: 'Page Two', image: '/images/image2.jpg' },
+  { slug: 'shoya-japanese-res', title: 'Page One', image: '/images/pizza.png' },
+  { slug: 'shanghai-vil', title: 'Page Two', image: '/images/image2.jpg' },
   { slug: 'page3', title: 'Page Three', image: '/images/image3.jpg' },
   { slug: 'page4', title: 'Page Four', image: '/images/image4.jpg' },
   { slug: 'page5', title: 'Page Five', image: '/images/image5.jpg' },
