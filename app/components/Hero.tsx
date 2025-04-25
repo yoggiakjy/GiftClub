@@ -75,7 +75,7 @@ const Hero = () => {
           whileHover={{
             scale: 1.05,
             y: -12,
-            rotate: 2
+            rotate: 2,
           }}
         >
           <Image

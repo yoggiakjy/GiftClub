@@ -2,21 +2,38 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { Orientation } from "../lib/types";
 interface NavbarItem {
   title: string;
   link: string;
 }
 
-const Navbar = ({ navbarItems }: { navbarItems: NavbarItem[] }) => {
+const Navbar = ({
+  navbarItems,
+  orientation,
+}: {
+  navbarItems: NavbarItem[];
+  orientation: Orientation;
+}) => {
   const [hovered, setHovered] = useState<number | null>(null);
   return (
-    <div className="relative w-full px-[1rem]">
+    <div
+      className={`${
+        orientation === Orientation.Horizontal
+          ? "w-full px-[1rem] relative"
+          : "absolute top-0 left-0 ml-[2rem]"
+      }`}
+    >
       <motion.div
         initial={{ y: 40, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.1, ease: "easeInOut" }}
         viewport={{ once: true }}
-        className="w-full flex justify-between items-center rounded-2xl px-[1rem] py-[0.5rem]"
+        className={`${
+          orientation === Orientation.Horizontal
+            ? "flex-row justify-between items-center w-full px-[1rem]"
+            : "flex-col justify-center items-start"
+        }  flex rounded-2xl py-[0.5rem]`}
       >
         {/* Logo */}
         <Link
@@ -43,9 +60,11 @@ const Navbar = ({ navbarItems }: { navbarItems: NavbarItem[] }) => {
         {/* Navbar Links */}
         <motion.div
           onMouseLeave={() => setHovered(null)}
-          className={
-            "absolute inset-0 hidden flex-1 flex-row items-center justify-center space-x-2 text-sm font-medium transition duration-200 hover:text-zinc-800 lg:flex lg:space-x-2"
-          }
+          className={`${
+            orientation === Orientation.Horizontal
+              ? "absolute inset-0 flex-row justify-center items-center space-x-2"
+              : "flex-col justify-start items-start"
+          }  hidden flex-1 text-sm font-medium transition duration-200 hover:text-zinc-800 lg:flex lg:space-x-2 `}
         >
           {navbarItems.map((item, index) => (
             <motion.a
@@ -60,7 +79,7 @@ const Navbar = ({ navbarItems }: { navbarItems: NavbarItem[] }) => {
               }}
               viewport={{ once: true }}
               onMouseEnter={() => setHovered(index)}
-              className="relative text-zinc-800 text-lg px-4 py-2"
+              className="relative text-zinc-800 text-lg px-4 py-2 "
               href={item.link}
               key={index}
             >
@@ -78,7 +97,9 @@ const Navbar = ({ navbarItems }: { navbarItems: NavbarItem[] }) => {
         {/* Header Button */}
         <Link
           href="/"
-          className="flex justify-center items-center relative z-20 w-[10rem] h-[3rem] rounded-full border font-medium hover:bg-neutral-100 transition duration-300 ease-in-out"
+          className={`${
+            orientation === Orientation.Vertical ? "mt-[2rem]" : ""
+          } flex justify-center items-center relative z-20 w-[10rem] h-[3rem] rounded-full border font-medium hover:bg-neutral-100 transition duration-300 ease-in-out`}
         >
           Download App
         </Link>

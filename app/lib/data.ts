@@ -4,6 +4,10 @@ export const NavbarLinks = [
     link: "/explore",
   },
   {
+    title: "Discover",
+    link: "/discover",
+  },
+  {
     title: "About",
     link: "/about",
   },
@@ -61,4 +65,11 @@ export const cuisines = [
     discount: "Up to 35% OFF",
     colour: "bg-yellow-200"
   },
+]
+
+export const videos = [
+  "/videos/video1.mp4",
+  "/videos/video2.mp4",
+  "/videos/video3.mp4",
+  "/videos/video4.mp4",
 ]

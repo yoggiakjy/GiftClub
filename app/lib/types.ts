@@ -14,3 +14,8 @@ export interface Cuisine {
   discount: string;
   colour: string;
 }
+
+export enum Orientation {
+  Horizontal,
+  Vertical,
+}
