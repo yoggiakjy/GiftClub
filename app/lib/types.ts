@@ -19,3 +19,11 @@ export enum Orientation {
   Horizontal,
   Vertical,
 }
+
+export interface ShortFormVideo {
+  id: number;
+  videoSrc: string;
+  account: string;
+  caption: string;
+  tags: string;
+}
