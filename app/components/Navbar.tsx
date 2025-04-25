@@ -1,9 +1,14 @@
 "use client";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Orientation } from "../lib/types";
 import AuthButton from "./AuthButton";
+import CreateOfferButton from "./CreateOfferButton";
+import { useAuth } from "../hooks/useAuth";
+import { doc, getDoc } from "firebase/firestore";
+import { firestore } from "@/src/firebase/firebase";
+
 interface NavbarItem {
   title: string;
   link: string;
@@ -17,6 +22,38 @@ const Navbar = ({
   orientation: Orientation;
 }) => {
   const [hovered, setHovered] = useState<number | null>(null);
+  const { user } = useAuth();
+  const [isRestaurant, setIsRestaurant] = useState(false);
+
+  // Check if the user is a restaurant whenever the user changes
+  useEffect(() => {
+    const checkIfRestaurant = async () => {
+      if (!user) {
+        setIsRestaurant(false);
+        return;
+      }
+
+      try {
+        // Get user data directly from the restaurants collection
+        const restaurantRef = doc(firestore, "restaurants", user.uid);
+        const restaurantSnap = await getDoc(restaurantRef);
+
+        if (restaurantSnap.exists() && restaurantSnap.data().userType === "restaurant") {
+          setIsRestaurant(true);
+        } else {
+          setIsRestaurant(false);
+        }
+      } catch (error) {
+        console.error("Error checking if user is restaurant:", error);
+        setIsRestaurant(false);
+      }
+    };
+
+    checkIfRestaurant();
+  }, [user]);
+
+  console.log("Is restaurant user:", isRestaurant); // For debugging
+
   return (
     <div
       className={`${
@@ -94,9 +131,9 @@ const Navbar = ({
             </motion.a>
           ))}
         </motion.div>
-
         {/* Authentication */}
         <AuthButton orientation={orientation} />
+        
       </motion.div>
     </div>
   );

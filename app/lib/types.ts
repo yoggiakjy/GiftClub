@@ -5,6 +5,7 @@ export interface Restaurant {
   discount: string;
   image: string;
   slug: string;
+  offers?: Offer[];
 }
 
 export interface Cuisine {
@@ -33,6 +34,16 @@ export interface ShortFormVideo {
   shareCount: number;
 }
 
+export interface Offer {
+  id: string;
+  discountPercentage: string;
+  timeEnd: string;
+  timeStart: string;
+  day: string;
+  availableSeats: number;
+  createdAt: any;
+  restaurantId: string;
+}
 export type DynamicRestaurant = {
   slug: string;
   title: string;
