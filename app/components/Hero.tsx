@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { motion } from "framer-motion";
@@ -42,22 +43,14 @@ const Hero = () => {
             in your city.
           </motion.p>
 
-          <motion.button
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{
-              duration: 0.5,
-              delay: 0.6,
-              ease: "easeInOut",
-            }}
-            viewport={{ once: true }}
-            className="flex justify-center items-center space-x-6 bg-neutral-200 rounded-full hover:scale-105 transition duration-300 ease-in-out py-3 px-6 mt-[4rem]"
-          >
-            <p className="text-zinc-800 text-lg font-semibold">
-              Get Started Now
-            </p>
-            <FaArrowRightLong className="rounded-full bg-zinc-800 w-[2.3rem] h-[2.3rem] p-2" />
-          </motion.button>
+          <button className="flex justify-center items-center space-x-6 bg-neutral-200 rounded-full py-3 px-6 mt-[4rem]">
+            <Link href={"/register"}>
+              <p className="text-zinc-800 text-lg font-semibold">
+                Get Started Now
+              </p>
+              <FaArrowRightLong className="rounded-full bg-zinc-800 w-[2.3rem] h-[2.3rem] p-2" />
+            </Link>
+          </button>
         </div>
 
         <motion.div
