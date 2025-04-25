@@ -2,8 +2,11 @@ import { useAuth } from "../hooks/useAuth";
 import { useRouter } from "next/navigation";
 
 const logOutButton = () => {
-  const { signOut } = useAuth();
+  const { signOut, user } = useAuth();
   const router = useRouter();
+  if (!user) {
+    return null;
+  }
 
   const handleLogout = async () => {
     try {
