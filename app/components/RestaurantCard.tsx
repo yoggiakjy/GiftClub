@@ -1,5 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
+import { ChevronRight } from 'lucide-react';
+import { Restaurant } from '../lib/types';
 
 interface RestaurantProps {
   restaurant: {
@@ -13,8 +15,8 @@ interface RestaurantProps {
 
 const RestaurantCard: React.FC<RestaurantProps> = ({ restaurant }) => {
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 w-full md:w-80"> {/* Adjust width here */}
-      <div className="relative h-48">
+    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 w-full md:w-80"> 
+      <div className="relative h-50">
         {restaurant.image ? (
           <Image
             src={restaurant.image}

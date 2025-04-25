@@ -42,7 +42,7 @@ const RestaurantCards = () => {
           <p className="text-gray-500 mt-2">Check back later for new offers!</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {restaurantsWithOffers.map((restaurant) => (
             <Link
               key={restaurant.slug}

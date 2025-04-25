@@ -10,6 +10,8 @@ import CreateOfferButton from "../components/CreateOfferButton";
 import { useAuth } from "../hooks/useAuth";
 import { firestore } from "@/src/firebase/firebase";
 import { doc, getDoc } from "firebase/firestore";
+import PageHeader from "../components/PageHeader";
+import Footer from "../components/Footer";
 
 const page = () => {
   const { user } = useAuth();
@@ -43,13 +45,15 @@ const page = () => {
   }, [user]);
   return (
     <>
-      <div className="w-full h-screen flex flex-col justify-start items-center ">
-        <Navbar
-          navbarItems={NavbarLinks}
-          orientation={Orientation.Horizontal}
-        />
-        <RestaurantCards restaurants={restaurants} />
-      </div>
+      <div className="w-full h-full flex flex-col justify-start items-center ">
+      <Navbar navbarItems={NavbarLinks} orientation={Orientation.Horizontal} />
+      <PageHeader
+        headline="Australia's Best Restaurants"
+        subline="Discover the best restaurant deals near you. Save up to 50% off the total bill, including drinks."
+      />
+      <RestaurantCards restaurants={restaurants} />
+      <Footer className="mt-[5rem]"/>
+    </div>
 
       <div className="fixed bottom-6 right-6 z-50">
         {/* Only show CreateOfferButton to logged-in restaurant users */}

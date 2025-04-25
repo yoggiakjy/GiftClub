@@ -44,3 +44,17 @@ export interface Offer {
   createdAt: any;
   restaurantId: string;
 }
+export type DynamicRestaurant = {
+  slug: string;
+  title: string;
+  image: string;
+  description: string;
+  location: string;
+  openingHours: string;
+  vouchers: Voucher[];
+}
+
+export type Voucher = {
+  voucherTime: string;
+  discount: string;
+}
