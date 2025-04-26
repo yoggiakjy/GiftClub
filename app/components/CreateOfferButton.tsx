@@ -78,9 +78,6 @@ const CreateOfferButton = () => {
 
     setIsLoading(true);
     try {
-      // Get prediction values based on discount and seats
-      const estimatedCustomers = `${8}-${12}`;
-      const estimatedRevenue = `$${2400}`;
 
       // Add offer to Firestore
       const offerData = {
@@ -89,8 +86,6 @@ const CreateOfferButton = () => {
         time: `${formatTime(offer.timeStart)} - ${formatTime(offer.timeEnd)}`,
         discount: `${offer.discountPercentage}% off`,
         availableSeats: offer.availableSeats,
-        estimatedCustomers,
-        estimatedRevenue,
         createdAt: serverTimestamp(),
       };
 

@@ -9,8 +9,6 @@ export interface Offer {
   createdAt: Date;
   day: string;
   discount: string;
-  estimatedCustomers: string;
-  estimatedRevenue: string;
   time: string;
 }
 
@@ -33,8 +31,6 @@ export const useOffers = () => {
             createdAt: data.createdAt?.toDate() || new Date(),
             day: data.day,
             discount: data.discount,
-            estimatedCustomers: data.estimatedCustomers,
-            estimatedRevenue: data.estimatedRevenue,
             time: data.time,
           });
         });

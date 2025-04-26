@@ -1,11 +1,13 @@
 export interface Restaurant {
-  id: number;
-  name: string;
-  location: string;
-  discount: string;
-  image: string;
-  slug: string;
-  offers?: Offer[];
+  restaurant: {
+    id: number;
+    name: string;
+    location: string;
+    discount: string;
+    image?: string;
+    slug: string;
+    hasOffers?: boolean;
+  };
 }
 
 export interface Cuisine {
@@ -52,9 +54,9 @@ export type DynamicRestaurant = {
   location: string;
   openingHours: string;
   vouchers: Voucher[];
-}
+};
 
 export type Voucher = {
   voucherTime: string;
   discount: string;
-}
+};
