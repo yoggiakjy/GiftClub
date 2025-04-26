@@ -132,6 +132,7 @@ const Navbar = ({
           ))}
         </motion.div>
         {/* Authentication */}
+        
         <AuthButton orientation={orientation} />
         
       </motion.div>

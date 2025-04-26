@@ -23,7 +23,7 @@ const Hero = () => {
             viewport={{ once: true }}
             className="text-6xl "
           >
-            Eat out without <span className="text-[#E2725B]">forking out!</span>
+            Feast with them <span className="text-[#E2725B]">DISCOUNTS!</span>
           </motion.p>
 
           <motion.p
@@ -137,9 +137,14 @@ const Hero = () => {
               viewport={{ once: true }}
               className="flex justify-center items-center space-x-6 bg-neutral-200 rounded-full hover:scale-105 transition duration-300 ease-in-out py-3 px-6 mt-6"
             >
-              <p className="text-zinc-800 text-lg font-semibold">
-                Check Our Venues
-              </p>
+              <Link
+                href={"/explore"}
+                className="flex justify-center items-center space-x-6 py-3 px-6"
+              >
+                <p className="text-zinc-800 text-lg font-semibold">
+                  Check Our Venues
+                </p>
+              </Link>
               <FaArrowRightLong className="rounded-full bg-zinc-800 w-[2.3rem] h-[2rem] p-2" />
             </motion.button>
           </div>
