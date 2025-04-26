@@ -24,7 +24,6 @@ export function useAuth() {
     return unsubscribe;
   }, []);
 
-  // Register a new customer
   const registerCustomer = async (
     email: string,
     password: string,
@@ -36,7 +35,6 @@ export function useAuth() {
         email,
         password
       );
-      // Create user document
       await setDoc(doc(firestore, "users", userCredential.user.uid), {
         email,
         displayName,
@@ -52,7 +50,6 @@ export function useAuth() {
     }
   };
 
-  // Register a new restaurant
   const registerRestaurant = async (
     email: string,
     password: string,
@@ -65,7 +62,6 @@ export function useAuth() {
         email,
         password
       );
-      // Create restaurant document
       await setDoc(doc(firestore, "restaurants", userCredential.user.uid), {
         email,
         name: restaurantName,
@@ -82,24 +78,20 @@ export function useAuth() {
     }
   };
 
-  // Sign in
   const signIn = async (email: string, password: string) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  // Sign out
   const signOut = async () => {
     return firebaseSignOut(auth);
   };
 
-  // Get user type (customer or restaurant)
+
   const getUserType = async (uid: string) => {
     try {
-      // Check if user exists in customers collection
       const userDoc = await getDoc(doc(firestore, "users", uid));
       if (userDoc.exists()) return "customer";
 
-      // Check if user exists in restaurants collection
       const restaurantDoc = await getDoc(doc(firestore, "restaurants", uid));
       if (restaurantDoc.exists()) return "restaurant";
 
