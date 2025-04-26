@@ -3,7 +3,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { firestore } from "@/src/firebase/firebase";
 
 export interface Offer {
-  id: string; // Add document ID
+  id: string; 
   restaurantId: string;
   availableSeats: number;
   createdAt: Date;

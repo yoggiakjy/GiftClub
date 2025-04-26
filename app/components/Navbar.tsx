@@ -25,7 +25,6 @@ const Navbar = ({
   const { user } = useAuth();
   const [isRestaurant, setIsRestaurant] = useState(false);
 
-  // Check if the user is a restaurant whenever the user changes
   useEffect(() => {
     const checkIfRestaurant = async () => {
       if (!user) {
@@ -34,7 +33,6 @@ const Navbar = ({
       }
 
       try {
-        // Get user data directly from the restaurants collection
         const restaurantRef = doc(firestore, "restaurants", user.uid);
         const restaurantSnap = await getDoc(restaurantRef);
 
@@ -73,7 +71,6 @@ const Navbar = ({
             : "flex-col justify-center items-start"
         }  flex rounded-2xl py-[0.5rem]`}
       >
-        {/* Logo */}
         <Link
           href={"/"}
           className="relative z-20 flex justify-center items-center"
@@ -95,7 +92,7 @@ const Navbar = ({
           </motion.div>
         </Link>
 
-        {/* Navbar Links */}
+
         <motion.div
           onMouseLeave={() => setHovered(null)}
           className={`${
@@ -131,7 +128,6 @@ const Navbar = ({
             </motion.a>
           ))}
         </motion.div>
-        {/* Authentication */}
         
         <AuthButton orientation={orientation} />
         

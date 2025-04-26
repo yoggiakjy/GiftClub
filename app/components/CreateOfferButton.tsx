@@ -119,7 +119,6 @@ const CreateOfferButton = () => {
     return `${formattedHour}:${minutes}${ampm}`;
   };
 
-  // Don't render anything if user is not a restaurant
   if (userType !== "restaurant") {
     return null;
   }

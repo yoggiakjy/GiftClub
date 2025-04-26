@@ -23,7 +23,6 @@ export const useRestaurants = () => {
 
         restaurantsSnapshot.forEach((doc) => {
           const data = doc.data();
-          // Create a slug from the restaurant name if it doesn't exist
           const slug = data.slug || data.name?.toLowerCase().replace(/\s+/g, '-') || doc.id;
           
           restaurantsList.push({

@@ -13,25 +13,22 @@ const RestaurantCards = () => {
     return <p>Loading...</p>;
   }
 
-  // First, enrich restaurants with offer data
+
   const enrichedRestaurants = restaurants.map((restaurant) => {
-    // Find any offers for this restaurant
     const restaurantOffers = offers.filter(offer => 
       offer.restaurantId === restaurant.id
     );
     
-    // Use the first offer's discount if available
     const activeOffer = restaurantOffers.length > 0 ? restaurantOffers[0] : null;
     
     return {
       ...restaurant,
       discount: activeOffer?.discount || restaurant.discount, 
       hasOffers: restaurantOffers.length > 0,
-      offerData: activeOffer // Store the full offer data if needed
+      offerData: activeOffer
     };
   });
 
-  // Then filter to only show restaurants with offers
   const restaurantsWithOffers = enrichedRestaurants.filter(restaurant => restaurant.hasOffers);
 
   return (

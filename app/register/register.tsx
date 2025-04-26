@@ -14,7 +14,6 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
-  // const [error, setError] = useState('');
 
   const { registerCustomer, registerRestaurant } = useAuth();
   const router = useRouter();
@@ -71,7 +70,6 @@ export default function Register() {
         </button>
       </div>
 
-      {/* {error && <p className="text-red-500 mb-4">{error}</p>} */}
 
       <form onSubmit={handleSubmit}>
         <div className="mb-4">

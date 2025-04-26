@@ -17,7 +17,6 @@ const page = () => {
   const { user } = useAuth();
   const [isRestaurant, setIsRestaurant] = useState(false);
 
-  // Check if the user is a restaurant whenever the user changes
   useEffect(() => {
     const checkIfRestaurant = async () => {
       if (!user) {
@@ -26,7 +25,6 @@ const page = () => {
       }
 
       try {
-        // Get user data directly from the restaurants collection
         const restaurantRef = doc(firestore, "restaurants", user.uid);
         const restaurantSnap = await getDoc(restaurantRef);
 
@@ -56,7 +54,6 @@ const page = () => {
     </div>
 
       <div className="fixed bottom-6 right-6 z-50">
-        {/* Only show CreateOfferButton to logged-in restaurant users */}
         {user && isRestaurant && <CreateOfferButton />}
       </div>
     </>
