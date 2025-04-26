@@ -18,7 +18,7 @@ export const pages = [
   {
     slug: "shanghai-village",
     title: "Shanghai Village",
-    image: "/images/image2.jpg",
+    image: "/images/pepperoni_pizza_standard.jpg",
     description:
       "Cheery Chinese dumpling house over 2 levels, with standard mains, pink walls and basic seating.",
     location: "112 Little Bourke St, Melbourne VIC 3000",
@@ -31,9 +31,9 @@ export const pages = [
     ],
   },
   {
-    slug: "shoya-japanese-r",
-    title: "Shanghai Village",
-    image: "/images/pizza.png",
+    slug: "burger-queen",
+    title: "Burger Queen",
+    image: "/images/pepperoni_pizza_standard.jpg",
     description:
       "Cheery Chinese dumpling house over 2 levels, with standard mains, pink walls and basic seating.",
     location: "112 Little Bourke St, Melbourne VIC 3000",
