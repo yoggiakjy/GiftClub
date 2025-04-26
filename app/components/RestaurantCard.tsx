@@ -3,17 +3,7 @@ import Image from 'next/image';
 import { ChevronRight } from 'lucide-react';
 import { Restaurant } from '../lib/types';
 
-interface RestaurantProps {
-  restaurant: {
-    name: string;
-    location: string;
-    discount?: string;
-    image?: string;
-    hasOffers?: boolean;
-  };
-}
-
-const RestaurantCard: React.FC<RestaurantProps> = ({ restaurant }) => {
+const RestaurantCard: React.FC<Restaurant> = ({ restaurant }) => {
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 w-full md:w-80"> 
       <div className="relative h-50">
