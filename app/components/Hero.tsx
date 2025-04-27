@@ -52,7 +52,7 @@ const Hero = () => {
               ease: "easeInOut",
             }}
             viewport={{ once: true }}
-            className=" bg-neutral-200 rounded-full"
+            className=" bg-neutral-200 rounded-full hover:scale-105 transition duration-300 ease-in-out"
           >
             <Link
               href={"/register"}
@@ -139,13 +139,13 @@ const Hero = () => {
             >
               <Link
                 href={"/explore"}
-                className="flex justify-center items-center space-x-6 py-3 px-6"
+                className="flex justify-center items-center space-x-6 py-1 px-1"
               >
-                <p className="text-zinc-800 text-lg font-semibold">
+                <p className="w-[10rem] text-zinc-800 text-lg font-semibold">
                   Check Our Venues
                 </p>
               </Link>
-              <FaArrowRightLong className="rounded-full bg-zinc-800 w-[2.3rem] h-[2rem] p-2" />
+              <FaArrowRightLong className="rounded-full bg-zinc-800 w-[2.3rem] h-[2.3rem] p-2" />
             </motion.button>
           </div>
         </div>

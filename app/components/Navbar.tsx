@@ -36,7 +36,10 @@ const Navbar = ({
         const restaurantRef = doc(firestore, "restaurants", user.uid);
         const restaurantSnap = await getDoc(restaurantRef);
 
-        if (restaurantSnap.exists() && restaurantSnap.data().userType === "restaurant") {
+        if (
+          restaurantSnap.exists() &&
+          restaurantSnap.data().userType === "restaurant"
+        ) {
           setIsRestaurant(true);
         } else {
           setIsRestaurant(false);
@@ -92,7 +95,6 @@ const Navbar = ({
           </motion.div>
         </Link>
 
-
         <motion.div
           onMouseLeave={() => setHovered(null)}
           className={`${
@@ -128,9 +130,8 @@ const Navbar = ({
             </motion.a>
           ))}
         </motion.div>
-        
+
         <AuthButton orientation={orientation} />
-        
       </motion.div>
     </div>
   );
